@@ -1,0 +1,1 @@
+ReactDOM.render(<button>LIKEE</button>, document.querySelector('#root'));
