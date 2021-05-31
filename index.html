@@ -4,14 +4,26 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="src/css/normalize.min.css">
+  <link rel="stylesheet" href="src/css/style.min.css">
   <title>Map</title>
 </head>
-<body>
-  <div id="root"></div>
+<body class="body">
+  <header class="header"></header>
+  <section class="main-information"></section>
+  <div class="map__wrapper">
+    <div class="map" id="map" style="width: 940px; height: 400px"></div>
+  </div>
+  <footer class="footer"></footer>
 
+  <img class="decorative_1" src="./img/cartoon_cloud-1.png" alt="Декоративная картинка ТЭЦ">
+  <img class="decorative_2" src="./img/cartoon_lep-1.png" alt="Декоративная картинка ЛЭП">
+
+  <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&apikey=e200de77-aec5-49ce-a4ee-7d953a717fbe" type="text/javascript"></script>
   <script src="https://unpkg.com/react@17/umd/react.production.min.js" crossorigin></script>
   <script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js" crossorigin></script>
   <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  <script type="text/babel" src="src/js/map.js"></script>
   <script type="text/babel" src="src/js/script.js"></script>
 </body>
 </html>

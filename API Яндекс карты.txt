@@ -1,0 +1,10 @@
+API-ключ: e200de77-aec5-49ce-a4ee-7d953a717fbe
+Для полной информации: https://developer.tech.yandex.ru/services/3
+*Этот же ключ находится в кабинете разработчика Яндекс.
+
+Подключение JS API с ключом: 
+https://api-maps.yandex.ru/2.1/?lang=ru_RU&apikey=<ваш API-ключ>
+
+Запросы к HTTP API Геокодера:
+https://geocode-maps.yandex.ru/1.x/?lang=ru_RU&apikey=
+<ваш API-ключ>&geocode=...
