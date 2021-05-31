@@ -6,7 +6,7 @@ function InnerHeader(props) {
   );
 }
 
-ReactDOM.render(<InnerHeader />, document.querySelector('.header'));
+ReactDOM.render(<InnerHeader />, document.getElementById('header'));
 
 function MainHeader(props) {
   return (
@@ -32,4 +32,4 @@ class MainWrapper extends React.Component {
   }
 }
 
-ReactDOM.render(<MainWrapper className="wrapper"/>, document.querySelector('.main-information'));
+ReactDOM.render(<MainWrapper className="wrapper"/>, document.getElementById('main-information'));
