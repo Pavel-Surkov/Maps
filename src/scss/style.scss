@@ -73,7 +73,13 @@ $basic-white: #FFF;
 .decorative_2 {
   z-index: -1;
   position: absolute;
-  width: 20%;
+  width: 15%;
   right: 0;
-  top: 500px;
+  bottom: 0;
+}
+
+.footer {
+  background-color: $basic-header;
+  height: 80px;
+  margin-top: 60px;
 }

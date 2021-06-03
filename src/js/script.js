@@ -21,15 +21,21 @@ function MainDescription(props) {
   );
 }
 
-class MainWrapper extends React.Component {
-  render() {
-    return (
-      <div className="wrapper">
-        <MainHeader value="Header of the project"/>
-        <MainDescription />
-      </div>
-    );
-  }
+function MainWrapper(props) {
+  return (
+    <div className="wrapper">
+      <MainHeader value="Header of the project"/>
+      <MainDescription />
+    </div>
+  );
 }
 
 ReactDOM.render(<MainWrapper className="wrapper"/>, document.getElementById('main-information'));
+
+function Footer(props) {
+  return (
+    <div></div>
+  );
+}
+
+ReactDOM.render(<Footer />, document.getElementById('footer'));
