@@ -2,8 +2,9 @@ ymaps.ready(init);
 
 function init(){
   let myMap = new ymaps.Map("map", {
-    center: [55.00, 83.00],
-    zoom: 10
+    center: [55.02, 82.95],
+    zoom: 10,
+    controls: ['fullscreenControl'],
   });
 
   ymaps.geocode('Новосибирск', {
@@ -17,9 +18,7 @@ function init(){
     firstGeoObject.properties.set('iconCaption', firstGeoObject.getAddressLine());
     
     myMap.geoObjects.add(firstGeoObject);
-    myMap.setBounds(bounds, {
-      checkZoomRange: true
-    });
+    
 
     console.log('Все данные геообъекта: ', firstGeoObject.properties.getAll());
 
