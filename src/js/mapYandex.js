@@ -1,35 +1,44 @@
 ymaps.ready(init);
 
-function init(){
+async function init() {
   let myMap = new ymaps.Map("map", {
     center: [55.02, 82.95],
-    zoom: 10,
+    zoom: 8,
     controls: ['fullscreenControl'],
   });
 
-  ymaps.geocode('Новосибирск', {
-    results: 1
-  }).then(function(res) {
-    let firstGeoObject = res.geoObjects.get(0),
-      coords = firstGeoObject.geometry.getCoordinates(),
-      bounds = firstGeoObject.properties.get('boundedBy');
+  let searchControl = new ymaps.control.SearchControl({
+    options: {
+        provider: 'yandex#search',
+    }
+  });
 
-    firstGeoObject.options.set('preset', 'islands#darkBlueDotIconWithCaption');
-    firstGeoObject.properties.set('iconCaption', firstGeoObject.getAddressLine());
-    
-    myMap.geoObjects.add(firstGeoObject);
-    
+  await myMap.controls.add(searchControl);
 
-    console.log('Все данные геообъекта: ', firstGeoObject.properties.getAll());
+  await searchControl.search('ТЭЦ');
 
-    console.log('Метаданные ответа геокодера: ', res.metaData);
+  for(let i = 0; i < searchControl.getResultsArray().length; i++) {
 
-    console.log('Метаданные геокодера: ', firstGeoObject.properties.get('metaDataProperty.GeocoderMetaData'));
+    searchControl.getResult(i)
+      .then(res => {
+        const categories = res.properties._data.categories;
+        const name = res.properties._data.name.toLowerCase();
 
-    console.log('precision', firstGeoObject.properties.get('metaDataProperty.GeocoderMetaData.precision'));
-    /**
-     * Все методы в разделе "Прямое геокодирование: "
-     * @see https://yandex.ru/dev/maps/jsbox/2.1/direct_geocode
-     */
-  })
+        if(
+          (
+            categories.indexOf('АЭС, ГЭС, ТЭС' != -1) ||
+            categories.indexOf('Энергоснабжение' != -1)
+          ) && (
+            name.includes('тэц') || name.includes('гэс')
+          )
+        ) {
+          console.log(res.properties._data.address);
+        }
+      });
+  }
+  
+  searchControl.getResult(0)
+    .then(res => console.log(res));
+  
+  //c.properties._data.categories - содержит категории объекта
 }
